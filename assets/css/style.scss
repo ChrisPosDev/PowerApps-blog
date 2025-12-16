@@ -4,12 +4,18 @@
 /* Import oryginalnego motywu */
 @import "{{ site.theme }}";
 
-/* 1. NAPRAWA "SKAKANIA" STRONY (Scrollbar Fix) */
+/* 1. USUNIĘCIE ROZMYCIA (POŚWIATY) - NOWOŚĆ */
+/* Wyłączamy cienie na wszystkich elementach tekstowych */
+body, h1, h2, h3, h4, h5, h6, p, li, a, span, div, header h1, header h2 {
+  text-shadow: none !important;
+}
+
+/* 2. NAPRAWA "SKAKANIA" STRONY */
 html {
   overflow-y: scroll;
 }
 
-/* 2. NAPRAWA NAGŁÓWKA (H1 i H2) */
+/* 3. NAPRAWA NAGŁÓWKA (H1 i H2) */
 header h1 {
   margin-left: 0 !important;
   padding-left: 0 !important;
@@ -17,15 +23,14 @@ header h1 {
   text-align: left !important;
 }
 
-/* 2.1 NAPRAWA LINKU W H1 (Żeby wyglądał jak tekst, a działał jak link) */
+/* Link w nagłówku - wygląda jak tekst, działa jak link */
 header h1 a {
-  color: #b5e853 !important; /* Kolor zielony Hackera */
-  text-decoration: none !important; /* Usuwa podkreślenie */
+  color: #b5e853 !important;
+  text-decoration: none !important;
   border: none !important;
-  display: block; /* Sprawia, że łatwiej w niego trafić myszką */
+  display: block;
 }
 
-/* Usuwamy efekt najechania myszką (opcjonalne, żeby nie zmieniał koloru) */
 header h1 a:hover {
   text-decoration: none !important;
   color: #b5e853 !important;
@@ -38,7 +43,7 @@ header h1:before, header h1::before {
   border: none !important;
 }
 
-/* Wyrównujemy H2 idealnie do H1 */
+/* Wyrównanie podtytułu */
 header h2 {
   margin-left: 0 !important;
   padding-left: 0 !important;
@@ -46,14 +51,14 @@ header h2 {
   width: 100% !important;
 }
 
-/* Zabezpieczenie kontenera */
+/* Kontener nagłówka */
 header .container {
   padding-left: 0 !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-/* 3. UKRYCIE ELEMENTÓW GITHUB */
+/* 4. UKRYCIE ELEMENTÓW GITHUB */
 .github-corner, header a.btn {
   display: none !important;
 }
