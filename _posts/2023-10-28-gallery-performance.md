@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "TEST: Pełny przegląd możliwości motywu Hacker"
-date: 2023-10-28
+date: 2023-10-30
 ---
 
 To jest post testowy, który sprawdza wszystkie style motywu Hacker.
