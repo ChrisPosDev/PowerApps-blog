@@ -5,18 +5,30 @@
 @import "{{ site.theme }}";
 
 /* 1. NAPRAWA "SKAKANIA" STRONY (Scrollbar Fix) */
-/* Rezerwuje miejsce na pasek przewijania zawsze, żeby strona nie skakała przy zmianie podstron */
 html {
   overflow-y: scroll;
 }
 
 /* 2. NAPRAWA NAGŁÓWKA (H1 i H2) */
-/* Resetujemy marginesy i paddingi "na sztywno" */
 header h1 {
   margin-left: 0 !important;
   padding-left: 0 !important;
   width: 100% !important;
   text-align: left !important;
+}
+
+/* 2.1 NAPRAWA LINKU W H1 (Żeby wyglądał jak tekst, a działał jak link) */
+header h1 a {
+  color: #b5e853 !important; /* Kolor zielony Hackera */
+  text-decoration: none !important; /* Usuwa podkreślenie */
+  border: none !important;
+  display: block; /* Sprawia, że łatwiej w niego trafić myszką */
+}
+
+/* Usuwamy efekt najechania myszką (opcjonalne, żeby nie zmieniał koloru) */
+header h1 a:hover {
+  text-decoration: none !important;
+  color: #b5e853 !important;
 }
 
 /* Usuwamy znaczek ./ */
@@ -34,7 +46,7 @@ header h2 {
   width: 100% !important;
 }
 
-/* Dodatkowe zabezpieczenie kontenera nagłówka */
+/* Zabezpieczenie kontenera */
 header .container {
   padding-left: 0 !important;
   margin-left: auto !important;
