@@ -1,0 +1,16 @@
+---
+---
+
+/* Importuje oryginalny motyw */
+@import "{{ site.theme }}";
+
+/* Usuwa ./ przed tytułem */
+header h1::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* Ukrywa przycisk GitHub (dla pewności, jeśli wróciłbyś do oryginalnego HTML) */
+.github-corner, header a.btn {
+  display: none !important;
+}
