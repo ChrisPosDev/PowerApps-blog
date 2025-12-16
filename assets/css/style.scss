@@ -1,23 +1,33 @@
 ---
 ---
 
-/* Importuje oryginalny motyw */
+/* Import oryginalnego motywu */
 @import "{{ site.theme }}";
 
-/* Usuwa ./ przed tytułem */
-header h1::before {
-  content: none !important;
-  display: none !important;
+/* 1. NAPRAWA TYTUŁU (H1) */
+/* Resetujemy ujemny margines, żeby tytuł zrównał się z podtytułem */
+header h1 {
+  margin-left: 0 !important;
+  width: 100% !important; /* Dla pewności */
 }
 
-/* Ukrywa przycisk GitHub */
-.github-corner, header a.btn {
+/* 2. USUNIĘCIE ZNACZKA ./ */
+/* Używamy obu składni (:before i ::before) oraz pustego contentu dla pewności */
+header h1:before, header h1::before {
+  content: "" !important;
   display: none !important;
+  border: none !important;
 }
 
-/* Naprawa wcięcia podtytułu (H2) żeby był równo z H1 */
+/* 3. NAPRAWA PODTYTUŁU (H2) */
+/* Upewniamy się, że podtytuł też jest równo do lewej */
 header h2 {
   margin-left: 0 !important;
   padding-left: 0 !important;
-  text-align: left; 
+  text-align: left !important;
+}
+
+/* 4. UKRYCIE PRZYCISKU GITHUB I WSTĄŻKI */
+.github-corner, header a.btn {
+  display: none !important;
 }
