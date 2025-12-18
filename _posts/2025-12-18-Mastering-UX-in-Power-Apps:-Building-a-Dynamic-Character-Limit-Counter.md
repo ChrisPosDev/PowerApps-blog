@@ -37,3 +37,32 @@ Instead of hardcoding a number (like "255"), we want to fetch the limit directly
 Set the `Text` property of your new label to the following formula:
 ```powerapps
 Len(inp_NewName.Value) & "/" & DataSourceInfo([@'Example SharePoint List'], DataSourceInfo.MaxLength, "YourColumnName")
+Let’s break down the variables used in the formula:
+
+* **`inp_NewName`**: This is the name of your Text Input control.
+* **`'Example SharePoint List'`**: The name of your connected SharePoint list.
+* **`"YourColumnName"`**: The internal name of the specific column in that list.
+
+### 3. The "Gotcha": Updating in Real-Time
+
+By default, Power Apps might not update the character count until the user clicks out of the box (loses focus). To make the counter update *while* the user is typing, you need to change a specific setting on the Text Input control.
+
+Find the **TriggerOutput** property and set it to `Keypress`.
+
+![Screenshot of the Property panel showing TriggerOutput set to 'Keypress'](INSERT_YOUR_IMAGE_PATH_HERE)
+
+**Note on Trigger Modes:**
+* **Delayed:** Updates when the user pauses typing.
+* **FocusOut:** Updates only when the user clicks away.
+* **Keypress:** Updates immediately on every character input. (**Select this one!**)
+
+---
+
+## Why use DataSourceInfo?
+
+Using the `DataSourceInfo` function is a pro-tip for scalable development. It allows you to validate user input using column-level information defined directly in your database schema, rather than hardcoding values in the app.
+
+* **Dynamic MaxLength:** As shown in this tutorial, `DataSourceInfo.MaxLength` ensures your UI always matches your database constraints. If you increase the limit in SharePoint, your app adapts automatically.
+* **Dynamic Required Fields:** You can also use `DataSourceInfo.Required` to check if a field is mandatory, allowing you to show/hide asterisks (`*`) or error messages dynamically.
+
+You can read the full documentation on this powerful function here: [Microsoft Learn: DataSourceInfo function](https://learn.microsoft.com/en-us/power-platform/power-fx/reference/function-datasourceinfo).
