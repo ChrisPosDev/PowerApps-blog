@@ -36,7 +36,7 @@ Instead of hardcoding a number (like "255"), we want to fetch the limit directly
 
 Set the Text property of your new label to the following formula:
 
-'Len(inp\_NewName.Value) \ \& \ "/" \ \& \ DataSourceInfo([@'Example SharePoint List'], DataSourceInfo.MaxLength, "YourColumnName")'
+`Len(inp\_NewName.Value) \ \& \ "/" \ \& \ DataSourceInfo([@'Example SharePoint List'], DataSourceInfo.MaxLength, "YourColumnName")`
 
 **Let’s break down the variables:**
 
