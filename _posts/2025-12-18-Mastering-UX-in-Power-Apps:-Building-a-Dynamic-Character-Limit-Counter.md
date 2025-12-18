@@ -35,3 +35,5 @@ First, place a standard **Text Label** control immediately below your Text Input
 Instead of hardcoding a number (like "255"), we want to fetch the limit directly from the Data Source (e.g., SharePoint). This ensures that if you change the column limit in SharePoint later, your app updates automatically without you having to rewrite code.
 
 Set the `Text` property of your new label to the following formula:
+```powerapps
+Len(inp_NewName.Value) & "/" & DataSourceInfo([@'Example SharePoint List'], DataSourceInfo.MaxLength, "YourColumnName")
