@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Mastering UX in Power Apps: Building a Dynamic Character Limit Counter"
-date: 2023-10-29
+date: 2025-12-18
 categories: [Power Apps, UX, Tutorial]
 tags: [Canvas App, Low-code, Design]
 description: "Learn how to improve User Experience by adding a dynamic character counter linked directly to your Data Source."
