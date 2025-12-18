@@ -7,8 +7,6 @@ tags: [Canvas App, Low-code, Design]
 description: "Learn how to improve User Experience by adding a dynamic character counter linked directly to your Data Source."
 ---
 
-# Mastering UX in Power Apps: Building a Dynamic Character Limit Counter
-
 As Power Apps developers, we often focus heavily on logic and data integrity, but User Experience (UX) is what separates a functional app from a great app.
 
 One small but powerful UI element that dramatically improves usability is the Character Limit Indicator.
