@@ -49,15 +49,13 @@ tutaj wstawic formule
 ### 3. The "Gotcha": Updating in Real-Time
 By default, Power Apps might not update the character count until the user clicks out of the box. To make the counter update while the user is typing, you need to change a specific setting on the Text Input control.
 
-Find the TriggerOutput property and set it to **Keypress**.
+Find the **TriggerOutput** property. This property determines when the control updates its **Value** and triggers OnChange. Set it to **Keypress**.
 
-![Screenshot of the Property panel showing TriggerOutput set to Keypress](https://placehold.co/600x200/222/00ff00?text=Property:+TriggerOutput+=+Keypress)
+Here is how the options work:
 
-**Comparison of Trigger Modes:**
-
-* **Delayed:** Updates when the user pauses.
-* **FocusOut:** Updates only when the user clicks away.
-* **Keypress:** Updates immediately on every character input. (Select this one!)
+* **Delayed** - Update the control's value when the user pauses typing.
+* **FocusOut** - Update the control's value when the user selects a different control or clicks outside the control.
+* **Keypress** - Update the control's value immediately on every character input. (Select this one!)
 
 ---
 
