@@ -7,15 +7,17 @@ tags: [Canvas App, Low-code, Design]
 description: "Learn how to improve User Experience by adding a dynamic character counter linked directly to your Data Source."
 ---
 
-As Power Apps developers, we often focus heavily on logic and data integrity, but **User Experience (UX)** is what separates a *functional* app from a *great* app.
+# Mastering UX in Power Apps: Building a Dynamic Character Limit Counter
 
-One small but powerful UI element that dramatically improves usability is the **Character Limit Indicator**.
+As Power Apps developers, we often focus heavily on logic and data integrity, but User Experience (UX) is what separates a functional app from a great app.
+
+One small but powerful UI element that dramatically improves usability is the Character Limit Indicator.
 
 ## Why is this crucial for UX?
 
-This simple counter plays a vital role in **Jakob Nielsen’s Usability Heuristics**, specifically regarding the **Visibility of System Status**.
+This simple counter plays a vital role in Jakob Nielsen’s Usability Heuristics, specifically regarding the Visibility of System Status.
 
-Users should never have to guess how much content they can type into a field. By providing a counter (e.g., "0/255"), you offer immediate feedback. This prevents frustration by letting the user know their limits *before* they hit the save button and trigger a validation error.
+> Users should never have to guess how much content they can type into a field. By providing a counter (e.g., "0/255"), you offer immediate feedback. This prevents frustration by letting the user know their limits before they hit the save button and trigger a validation error.
 
 ![Character Limit Indicator Example]({{ site.baseurl }}/assets/img/1.png)
 *Figure 1: Screenshot of the text input with the 0/255 counter visible*
@@ -27,42 +29,44 @@ Users should never have to guess how much content they can type into a field. By
 Adding this to your Canvas App is straightforward. Here is the step-by-step guide to making it dynamic and maintenance-free.
 
 ### 1. Add the Label
-
-First, place a standard **Text Label** control immediately below your Text Input control.
+First, place a standard Text Label control immediately below your Text Input control.
 
 ### 2. The Formula
-
 Instead of hardcoding a number (like "255"), we want to fetch the limit directly from the Data Source (e.g., SharePoint). This ensures that if you change the column limit in SharePoint later, your app updates automatically without you having to rewrite code.
 
-Set the `Text` property of your new label to the following formula:
-```powerapps
-Len(inp_NewName.Value) & "/" & DataSourceInfo([@'Example SharePoint List'], DataSourceInfo.MaxLength, "YourColumnName")
-Let’s break down the variables used in the formula:
+Set the Text property of your new label to the following formula:
 
-* **`inp_NewName`**: This is the name of your Text Input control.
-* **`'Example SharePoint List'`**: The name of your connected SharePoint list.
-* **`"YourColumnName"`**: The internal name of the specific column in that list.
+tutaj wstawic formule
+
+**Let’s break down the variables:**
+
+| Variable | Description |
+| :--- | :--- |
+| inp_NewName | This is the name of your Text Input control. |
+| 'Example SharePoint List' | The name of your connected SharePoint list. |
+| "YourColumnName" | The internal name of the specific column in that list. |
 
 ### 3. The "Gotcha": Updating in Real-Time
+By default, Power Apps might not update the character count until the user clicks out of the box. To make the counter update while the user is typing, you need to change a specific setting on the Text Input control.
 
-By default, Power Apps might not update the character count until the user clicks out of the box (loses focus). To make the counter update *while* the user is typing, you need to change a specific setting on the Text Input control.
+Find the TriggerOutput property and set it to **Keypress**.
 
-Find the **TriggerOutput** property and set it to `Keypress`.
+![Screenshot of the Property panel showing TriggerOutput set to Keypress](https://placehold.co/600x200/222/00ff00?text=Property:+TriggerOutput+=+Keypress)
 
-![Screenshot of the Property panel showing TriggerOutput set to 'Keypress'](INSERT_YOUR_IMAGE_PATH_HERE)
+**Comparison of Trigger Modes:**
 
-**Note on Trigger Modes:**
-* **Delayed:** Updates when the user pauses typing.
+* **Delayed:** Updates when the user pauses.
 * **FocusOut:** Updates only when the user clicks away.
-* **Keypress:** Updates immediately on every character input. (**Select this one!**)
+* **Keypress:** Updates immediately on every character input. (Select this one!)
 
 ---
 
 ## Why use DataSourceInfo?
 
-Using the `DataSourceInfo` function is a pro-tip for scalable development. It allows you to validate user input using column-level information defined directly in your database schema, rather than hardcoding values in the app.
+Using the DataSourceInfo function is a pro-tip for scalable development. It allows you to validate user input using column-level information defined in your database.
 
-* **Dynamic MaxLength:** As shown in this tutorial, `DataSourceInfo.MaxLength` ensures your UI always matches your database constraints. If you increase the limit in SharePoint, your app adapts automatically.
-* **Dynamic Required Fields:** You can also use `DataSourceInfo.Required` to check if a field is mandatory, allowing you to show/hide asterisks (`*`) or error messages dynamically.
+* **Dynamic MaxLength:** As shown above, DataSourceInfo.MaxLength ensures your UI always matches your database schema.
+* **Dynamic Required Fields:** You can also use DataSourceInfo.Required to check if a field is mandatory, allowing you to show/hide asterisks (*) or error messages dynamically.
 
-You can read the full documentation on this powerful function here: [Microsoft Learn: DataSourceInfo function](https://learn.microsoft.com/en-us/power-platform/power-fx/reference/function-datasourceinfo).
+You can read the full documentation on this powerful function here:
+[Microsoft Learn: DataSourceInfo function](https://learn.microsoft.com/en-us/power-platform/power-fx/reference/function-datasourceinfo)
